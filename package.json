@@ -16,6 +16,7 @@
   },
   "author": "Dharitri",
   "license": "GPL-3.0-or-later",
+  "repository": "github:TerraDharitri/drt-sdk-dapp-utils",
   "devDependencies": {
     "@terradharitri/sdk-core": "0.0.1",
     "@swc/core": "^1.4.17",
