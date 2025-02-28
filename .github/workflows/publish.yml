@@ -33,6 +33,13 @@ jobs:
         id: package
         uses: andreigiura/action-nodejs-package-info@v1.0.2
 
+      - name: Bump Patch Version if Tag Exists
+        if: env.TAG_EXISTS == 'true'
+        run: |
+          NEW_VERSION=$(node -p "let v = require('./package.json').version.split('.'); v[2] = parseInt(v[2]) + 1; v.join('.')")  
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "RELEASE_TAG=v$NEW_VERSION" >> $GITHUB_ENV
+      
       - name: Publish to npmjs next version
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
@@ -45,11 +52,6 @@ jobs:
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
         run: npm publish
         
-      - name: Bump Patch Version if Tag Exists
-        if: env.TAG_EXISTS == 'true'
-        run: |
-          NEW_VERSION=$(node -p "let v = require('./package.json').version.split('.'); v[2] = parseInt(v[2]) + 1; v.join('.')")  
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          echo "RELEASE_TAG=v$NEW_VERSION" >> $GITHUB_ENV
+     
 
 
