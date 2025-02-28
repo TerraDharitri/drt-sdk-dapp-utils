@@ -44,3 +44,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
         run: npm publish
+        
+      - name: Bump Patch Version if Tag Exists
+        if: env.TAG_EXISTS == 'true'
+        run: |
+          NEW_VERSION=$(node -p "let v = require('./package.json').version.split('.'); v[2] = parseInt(v[2]) + 1; v.join('.')")  
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "RELEASE_TAG=v$NEW_VERSION" >> $GITHUB_ENV
+
+
