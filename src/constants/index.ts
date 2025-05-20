@@ -1,2 +1,1 @@
-export * from "./browserConstants";
-export * from './dappConstants';
+export * from "./crossWindowProviderConstants";
