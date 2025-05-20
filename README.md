@@ -4,14 +4,14 @@ This package provides a set of utilities and models for dApp development.
 
 ## Distribution
 
-[npm](https://www.npmjs.com/package/@TerraDharitri/sdk-dapp-utils)
+[npm](https://www.npmjs.com/package/@terradharitri/sdk-dapp-utils)
 
 ## Installation
 
-`sdk-dapp-utils` is delivered via [npm](https://www.npmjs.com/package/@TerraDharitri/sdk-dapp-utils), therefore it can be installed as follows:
+`sdk-dapp-utils` is delivered via [npm](https://www.npmjs.com/package/@terradharitri/sdk-dapp-utils), therefore it can be installed as follows:
 
 ```
-npm install @TerraDharitri/sdk-dapp-utils
+npm install @terradharitri/sdk-dapp-utils
 ```
 
 ### Building the library

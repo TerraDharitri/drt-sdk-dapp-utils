@@ -1,25 +1,14 @@
-import type { Transaction, Message } from "@terradharitri/sdk-core";
-import type { Nullable } from "../types";
+import type { Transaction, SignableMessage } from "@terradharitri/sdk-core/";
+import { Nullable } from "../types/nullable";
 
 export interface IDAppProviderOptions {
-  [key: PropertyKey]: unknown;
-}
-
-export interface IDAppProviderAccount {
-  address: string;
-  signature?: string;
-  multisig?: string;
-  impersonate?: string;
-  [key: string]: unknown;
+  callbackUrl?: string;
+  [key: string]: any;
 }
 
 export interface IDAppProviderBase {
-  login?(options?: IDAppProviderOptions): Promise<IDAppProviderAccount | null>;
+  login?(options?: IDAppProviderOptions): Promise<string | boolean>;
   logout(options?: IDAppProviderOptions): Promise<boolean>;
-  getAccount(): IDAppProviderAccount | null;
-  setAccount(account: IDAppProviderAccount): void;
-  isInitialized(): boolean;
-  isConnected?(): boolean;
   signTransaction(
     transaction: Transaction,
     options?: IDAppProviderOptions
@@ -29,7 +18,7 @@ export interface IDAppProviderBase {
     options?: IDAppProviderOptions
   ): Promise<Nullable<Transaction[]>>;
   signMessage(
-    messageToSign: Message,
+    message: SignableMessage,
     options?: IDAppProviderOptions
-  ): Promise<Nullable<Message>>;
+  ): Promise<Nullable<SignableMessage>>;
 }
