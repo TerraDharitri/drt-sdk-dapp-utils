@@ -1,2 +1,2 @@
-export * from "./windowProviderConstants";
 export * from "./browserConstants";
+export * from './dappConstants';
