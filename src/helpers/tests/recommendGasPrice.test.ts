@@ -44,7 +44,7 @@ describe('recommendGasPrice', () => {
       expect(result).toBeLessThanOrEqual(MIN_GAS_PRICE * 30);
     });
 
-    it('should handle DharitriX swap transaction parameters', () => {
+    it('should handle xExchange swap transaction parameters', () => {
       const result = recommendGasPrice({
         transactionDataLength: 143,
         transactionGasLimit: 30_000_000,
